@@ -1,0 +1,13 @@
+footer {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  color: $gray-light;
+  font-size: 14px;
+  text-align: center;
+  padding: 32px;
+  background: $gray-dark-bg;
+  strong {
+    color: $gray-medium;
+  }
+}
