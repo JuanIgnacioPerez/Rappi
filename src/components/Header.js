@@ -5,10 +5,23 @@ import search from '../data/assets/search.svg';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 class Header extends Component {
-  /* constructor(props) {
+  constructor(props) {
     super(props);
-  } */
-
+    this.state = {
+      showCart: false,
+      cart: this.props.cartItems,
+    };
+  }
+  handleCart(e) {
+    e.preventDefault();
+    this.setState({
+      showCart: !this.state.showCart
+    });
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+  }
+  
   render() {
     return (
       <header>
@@ -29,18 +42,16 @@ class Header extends Component {
                   type="search"
                   placeholder="Buscar productos"
                   className="search-keyword"
-                //onChange={this.props.handleSearch}
                 />
                 <button
                   className="search-button"
                   type="submit"
-                //onClick={this.handleSubmit.bind(this)}
-                > 
-                <img
-                  className="search-icon"
-                  src={search} 
-                  alt="lupa"/>
-                </button> 
+                >
+                  <img
+                    className="search-icon"
+                    src={search}
+                    alt="lupa" />
+                </button>
               </div>
             </Col>
             <Col xs={12} sm={4} className="item-cont">
@@ -49,7 +60,7 @@ class Header extends Component {
                   <table>
                     <tbody>
                       <tr>
-                        <td>No. de productos</td>
+                        <td>Productos</td>
                         <td>:</td>
                         <td>
                           <strong>12</strong>
@@ -59,19 +70,28 @@ class Header extends Component {
                         <td>Total</td>
                         <td>:</td>
                         <td>
-                          <strong>311212</strong>
+                          <strong>124.000</strong>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                <a className="cart-icon" href="/">
+                <a className="cart-icon"
+                    href="/"
+                    onClick={this.handleCart.bind(this)}>
                   <img
                     className="cart-bag"
                     src={shoppingBag}
                     alt="Cart"
                   />
                 </a>
+                <div
+                  className={
+                    this.state.showCart ? "cart-preview active" : "cart-preview"
+                  }
+                >
+                <p> no tienes productos en tu carrito </p>
+                </div>
               </div>
             </Col>
           </Row>

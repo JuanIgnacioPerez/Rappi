@@ -82,6 +82,62 @@ header {
   .search-icon {
     width: 20px;
   }
+  
+  .cart-count {
+    display: block;
+    position: absolute;
+    background: $primary-orange;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    width: 24px;
+    border-radius: 50%;
+    top: -6px;
+    right: -9px;
+  }
+
+  .cart-preview {
+    display: none;
+    background: $white;
+    border: 1px solid $gray-eighty;
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: -9px;
+      right: 58px;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid $gray-eighty;
+      z-index: 1;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      top: -7px;
+      right: 59px;
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid $white;
+      z-index: 1;
+    }
+  }
+  .cart-preview.active {
+    z-index: 99;
+    display: block;
+    position: absolute;
+    top: 48px;
+    width: 300px;
+    height: 360px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  }
 
   @media (min-width: 768px) {
     .show-grid {
